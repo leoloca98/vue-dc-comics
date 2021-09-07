@@ -1,28 +1,66 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <BlackLines />
+    <Header />
+    <Content />
+    <Nav-Bar />
+    <Jumbotron />
+    <Footer />
+    <BlackLines />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Header from "@/components/Header.vue";
+import Content from "@/components/Content.vue";
+import NavBar from "@/components/NavBar.vue";
+import Jumbotron from "@/components/Jumbotron.vue";
+import Footer from "@/components/Footer.vue";
+import BlackLines from "@/components/BlackLines.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Content,
+    NavBar,
+    Jumbotron,
+    Footer,
+    BlackLines,
+  },
+};
 </script>
+    BlackLines
 
-<style lang="scss">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+
+.text-white {
+  color: white;
+}
+
+img {
+  max-height: 100%;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+ul,
+li {
+  list-style-type: none;
+  text-decoration: none;
 }
 </style>
