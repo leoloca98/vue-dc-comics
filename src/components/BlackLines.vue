@@ -1,5 +1,5 @@
 <template>
-  <div id="black-lines"></div>
+  <div id="black-lines"><span>CIAO</span></div>
 </template>
 
 <script>
@@ -8,7 +8,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #black-lines {
   position: relative;
   height: 30px;

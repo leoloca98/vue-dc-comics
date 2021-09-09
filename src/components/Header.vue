@@ -3,20 +3,15 @@
     <div class="container">
       <div class="content">
         <div class="logo">
-          <img alt="DC Logo" src="@/assets/img/dc-logo.png" />
+          <a href="#"><img alt="DC Logo" src="../assets/img/dc-logo.png" /></a>
         </div>
         <div class="menu">
           <ul>
-            <li>CHARACTERS</li>
-            <li>COMICS</li>
-            <li>MOVIES</li>
-            <li>TV</li>
-            <li>GAMES</li>
-            <li>COLLETIBLES</li>
-            <li>VIDEOS</li>
-            <li>FANS</li>
-            <li>NEWS</li>
-            <li>SHOP</li>
+            <li v-for="(link, index) in links" :key="index + link.name">
+              <a href="link.url" :class="{ active: link.current }">{{
+                link.name
+              }}</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -27,42 +22,108 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      links: [
+        {
+          name: "CHARCTERS",
+          url: "#",
+          current: false,
+        },
+        {
+          name: "COMICS",
+          url: "#",
+          current: true,
+        },
+        {
+          name: "MOVIES",
+          url: "#",
+          current: false,
+        },
+        {
+          name: "TV",
+          url: "#",
+          current: false,
+        },
+        {
+          name: "GAMES",
+          url: "#",
+          current: false,
+        },
+        {
+          name: "COLLECTIBLES",
+          url: "#",
+          current: false,
+        },
+        {
+          name: "VIDEOS",
+          url: "#",
+          current: false,
+        },
+        {
+          name: "FANS",
+          url: "#",
+          current: false,
+        },
+        {
+          name: "NEWS",
+          url: "#",
+          current: false,
+        },
+        {
+          name: "SHOP",
+          url: "#",
+          current: false,
+        },
+      ],
+    };
+  },
+  computed: {
+    sortedLinks() {
+      const linksCopy = [...this.links];
+
+      return linksCopy.sort((a, b) => {
+        if (a.name > b.name) return 1;
+        if (a.name < b.name) return -1;
+        else return 0;
+      });
+    },
+  },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../assets/scss/_mixins.scss";
+@import "../assets/scss/_vars.scss";
 #nav-bar {
   height: 120px;
   width: 100%;
-  background-color: white;
-}
+  background-color: $Header-Color;
 
-.content {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  justify-content: space-between;
-}
+  .content {
+    @include center("between");
+    height: 120px;
 
-.logo {
-  height: 100%;
-}
+    img {
+      height: 120px;
+      padding: 20px;
+    }
 
-.logo img {
-  max-height: 90px;
-  margin: 15px;
-}
+    ul {
+      @include center("horizontal");
+      padding: 0;
 
-.menu {
-  height: 100%;
-}
+      li {
+        height: 120px;
+        line-height: 120px;
+        font-weight: bold;
 
-ul,
-li {
-  display: inline-block;
-  list-style-type: none;
-  line-height: 100px;
-  padding-right: 15px;
-  font-size: 15px;
+        a {
+          padding: 10px;
+          padding-bottom: 50px;
+        }
+      }
+    }
+  }
 }
 </style>

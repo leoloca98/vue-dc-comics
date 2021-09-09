@@ -14,22 +14,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../assets/scss/_vars.scss";
 #content {
   height: 120px;
   width: 100%;
-  background-color: rgb(28, 28, 28);
-}
-
-.d-flex {
-  height: 120px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-
-.fs-25 {
-  font-size: 25px;
+  background-color: $Content-Color;
 }
 </style>

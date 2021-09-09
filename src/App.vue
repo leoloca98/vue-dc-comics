@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import Content from "@/components/Content.vue";
-import NavBar from "@/components/NavBar.vue";
-import Jumbotron from "@/components/Jumbotron.vue";
-import Footer from "@/components/Footer.vue";
-import BlackLines from "@/components/BlackLines.vue";
+import Header from "../src/components/Header.vue";
+import Content from "../src/components/Content.vue";
+import NavBar from "../src/components/NavBar.vue";
+import Jumbotron from "../src/components/Jumbotron.vue";
+import Footer from "../src/components/Footer.vue";
+import BlackLines from "../src/components/BlackLines.vue";
 export default {
   name: "App",
   components: {
@@ -29,38 +29,13 @@ export default {
   },
 };
 </script>
-    BlackLines
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 13px;
-}
-
-.text-white {
-  color: white;
-}
-
-img {
-  max-height: 100%;
-}
-
+<style lang="scss">
 #app {
   height: 100vh;
   width: 100%;
   font-family: sans-serif;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-ul,
-li {
-  list-style-type: none;
-  text-decoration: none;
-}
+@import "../src/assets/scss/style.scss";
 </style>

@@ -3,30 +3,15 @@
     <div class="container">
       <div class="row">
         <div class="col-1">
-          <input
-            id="button"
-            type="button"
-            placeholder="SIGN UP NOW!"
-            value="SIGN UP NOW!"
-          />
+          <input class="button" type="button" value="SIGN UP NOW!" />
         </div>
         <div class="col-2">
-          <div class="txtb">FOLLOW US</div>
+          <div class="text-blue">FOLLOW US</div>
           <ul>
-            <li>
-              <img src="../assets/img/footer-facebook.png" alt="" />
-            </li>
-            <li>
-              <img src="../assets/img/footer-twitter.png" alt="" />
-            </li>
-            <li>
-              <img src="../assets/img/footer-youtube.png" alt="" />
-            </li>
-            <li>
-              <img src="../assets/img/footer-pinterest.png" alt="" />
-            </li>
-            <li>
-              <img src="../assets/img/footer-periscope.png" alt="" />
+            <li v-for="(socialIcon, index) in socialIcons" :key="index">
+              <a href="#" class="social"
+                ><img :src="socialIcon.image" :alt="socialIcon.name"
+              /></a>
             </li>
           </ul>
         </div>
@@ -38,58 +23,85 @@
 <script>
 export default {
   name: "Footer",
+  data() {
+    return {
+      socialIcons: [
+        {
+          name: "Facebook",
+          image: require("../assets/img/footer-facebook.png"),
+        },
+        {
+          name: "Twitter",
+          image: require("../assets/img/footer-twitter.png"),
+        },
+        {
+          name: "YouTube",
+          image: require("../assets/img/footer-youtube.png"),
+        },
+        {
+          name: "Pinterest",
+          image: require("../assets/img/footer-pinterest.png"),
+        },
+        {
+          name: "Periscope",
+          image: require("../assets/img/footer-periscope.png"),
+        },
+      ],
+    };
+  },
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../assets/scss/_vars.scss";
+@import "../assets/scss/_mixins.scss";
 #footer {
   position: relative;
   height: 117px;
   width: 100%;
-  background-color: rgb(48, 48, 48);
-}
+  background-color: $Footer-Color;
 
-#footer li {
-  list-style-type: none;
-  display: inline-block;
-  margin-right: 20px;
-}
+  .row {
+    height: 117px;
+    width: 100%;
+    @include center("vertical");
+    justify-content: space-between;
 
-.row {
-  height: 117px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    .col-1 {
+      height: 100%;
+      width: calc(100% / 2);
+      @include center("vertical");
+      justify-content: flex-start;
 
-.col-1 {
-  height: 100%;
-  width: calc(100% / 2);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
+      .button {
+        padding: 15px 25px;
+        background-color: $Footer-Color;
+        border: 2px solid $Principal-Color;
+        color: white;
+      }
+    }
 
-.col-2 {
-  height: 100%;
-  width: calc(100% / 2);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
+    .col-2 {
+      height: 100%;
+      width: calc(100% / 2);
+      @include center("vertical");
+      justify-content: flex-end;
 
-#button {
-  color: white;
-  padding: 15px 25px;
-  background-color: rgb(48, 48, 48);
-  border: 2px solid rgb(2, 130, 249);
-}
+      .text-blue {
+        font-size: 25px;
+        font-weight: 600;
+        margin-right: 30px;
+        color: $Principal-Color;
+      }
 
-.txtb {
-  color: rgb(2, 130, 249);
-  font-size: 25px;
-  font-weight: 600;
-  margin-right: 30px;
+      ul {
+        display: flex;
+
+        li {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
 }
 </style>
