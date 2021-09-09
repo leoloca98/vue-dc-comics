@@ -2,14 +2,23 @@
   <div id="content">
     <div class="container">
       <div class="cdComics">
-        <div class="card">
-          <figure>
-            <img
-              src="https://www.dccomics.com/sites/default/files/styles/covers192x291/public/comic-covers/2018/09/AC1000_DLX_162-001_HD_5ba13723281ab0.37845353.jpg?itok=ZsI-C5eX"
-              alt=""
-            />
-          </figure>
-          <span class="text-white">Action Comics</span>
+        <div class="currentSeries text-white">CURRENT SERIES</div>
+        <div class="cdComics-list">
+          <div
+            v-for="(DcCard, index) in CdComicsCards"
+            :key="index"
+            class="card"
+          >
+            <figure>
+              <img :src="DcCard.thumb" />
+            </figure>
+            <div class="nameDc">
+              <span class="text-white uppercase">{{ DcCard.series }}</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="button text-white clickable">LOAD MORE</button>
         </div>
       </div>
     </div>
@@ -115,32 +124,75 @@ export default {
 <style scoped lang="scss">
 @import "../assets/scss/_vars.scss";
 #content {
-  height: 500px;
+  height: 600px;
   width: 100%;
   background-color: $Content-Color;
 
+  .currentSeries {
+    height: 40px;
+    width: 180px;
+    font-size: 17px;
+    background-color: $Principal-Color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -3%;
+    left: -38%;
+  }
+
   .cdComics {
-    padding: 30px;
+    height: 600px;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 
-    .card {
+    .cdComics-list {
+      height: 450px;
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      flex-basis: calc(100% / 6);
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
 
-      figure {
-        position: relative;
-        height: 150px;
+      .card {
+        display: flex;
+        flex-direction: column;
+        height: 180px;
         width: 150px;
-        border: 1px dashed red;
+        margin: 15px;
 
-        img {
-          z-index: 1;
+        figure {
+          height: 85%;
           width: 100%;
+
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: top;
+          }
+        }
+
+        .nameDc {
+          display: flex;
+          justify-content: flex-start;
+          height: 15%;
+          width: 100%;
+
+          span {
+            font-size: 11px;
+            padding-top: 10px;
+          }
         }
       }
+    }
+
+    .button {
+      background-color: $Principal-Color;
+      padding: 10px 50px;
+      margin-top: 50px;
     }
   }
 }
