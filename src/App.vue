@@ -2,6 +2,7 @@
   <div id="app">
     <BlackLines />
     <Header />
+    <TopJumbotron />
     <Content />
     <Nav-Bar />
     <Jumbotron />
@@ -17,6 +18,7 @@ import NavBar from "../src/components/NavBar.vue";
 import Jumbotron from "../src/components/Jumbotron.vue";
 import Footer from "../src/components/Footer.vue";
 import BlackLines from "../src/components/BlackLines.vue";
+import TopJumbotron from "../src/components/TopJumbotron.vue";
 export default {
   name: "App",
   components: {
@@ -26,6 +28,7 @@ export default {
     Jumbotron,
     Footer,
     BlackLines,
+    TopJumbotron,
   },
 };
 </script>
